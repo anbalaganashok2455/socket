@@ -12,28 +12,28 @@ const io = new Server(server, {
   cors: { origin: "*" },
 });
 
-// 👉 Store hotels in memory
+
 let hotels = [];
 
-// 👉 Load your JSON (replace with your actual file)
+
 import fs from "fs";
 
 const rawData = fs.readFileSync("./hotel_2000.json", "utf-8");
 const parsed = JSON.parse(rawData);
 
-// 🔥 TAKE ONLY 5 HOTELS
+
 const visibleHotels = parsed.hotels.slice(0, 10);
 
-// ✅ API → send ONLY these 5
+
 app.get("/hotels", (req, res) => {
   res.json(visibleHotels);
 });
 
-// ✅ SOCKET → update ONLY these same 5
+
 setInterval(() => {
   const updates = [];
 
-  // update 2–3 hotels each time
+
   const updatesCount = Math.floor(Math.random() * 3) + 1;
 
   for (let i = 0; i < updatesCount; i++) {
@@ -56,7 +56,7 @@ setInterval(() => {
   io.emit("price_update", updates);
 }, 2000);
 
-// ✅ Socket connection
+
 io.on("connection", (socket) => {
   console.log("🟢 User connected:", socket.id);
 });
