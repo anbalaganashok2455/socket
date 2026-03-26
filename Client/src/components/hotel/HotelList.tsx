@@ -10,7 +10,6 @@ const MultiSelect = dynamic(() => import("../ui/MultiSelect"), { ssr: false });
 
 const BATCH_SIZE = 20;
 
-// ✅ TYPES (your structure)
 type Room = {
   Rooms: string[];
   TotalPrice: number;
@@ -35,7 +34,7 @@ type PriceUpdate = {
   newPrice: number;
 };
 
-// Filters
+
 const RATING_OPTIONS = ["5 Star", "4 Star", "3 Star"];
 const RATING_MAP: Record<string, number> = {
   "5 Star": 5,
@@ -94,7 +93,7 @@ const HotelList = () => {
     socketRef.current = socket;
 
     socket.on("connect", () => {
-      // console.log("✅ Connected:", socket.id);
+      // console.log("Connected:", socket.id);
     });
 
     socket.on("price_update", (updates: PriceUpdate[]) => {
