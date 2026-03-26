@@ -51,16 +51,16 @@ setInterval(() => {
     });
   }
 
-  console.log("📡 Sending updates:", updates);
+  console.log(" Sending updates:", updates);
 
   io.emit("price_update", updates);
 }, 2000);
 
 
 io.on("connection", (socket) => {
-  console.log("🟢 User connected:", socket.id);
+  console.log(" User connected:", socket.id);
 });
 
 server.listen(4000, () => {
-  console.log("🚀 Server running on http://localhost:4000");
+  console.log("Server running on http://localhost:4000");
 });
