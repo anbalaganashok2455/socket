@@ -22,7 +22,7 @@ const rawData = fs.readFileSync("./hotel_2000.json", "utf-8");
 const parsed = JSON.parse(rawData);
 
 
-const visibleHotels = parsed.hotels.slice(0, 10);
+const visibleHotels = parsed.hotels.slice(0, 2000);
 
 
 app.get("/hotels", (req, res) => {
